@@ -30,11 +30,11 @@ int BST::count(TreeNode* node) {
 	if (node == nullptr) return 0;
 	return 1 + count(node->left) + count(node->right);
 }
-	
+
 int BST::count() {
 	return count(root);
 }
-	
+
 int BST::height(TreeNode* node) {
 	if (node == nullptr) return -1;
 
