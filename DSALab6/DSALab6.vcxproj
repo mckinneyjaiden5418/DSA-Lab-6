@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\binary_search_tree.h" />
+    <ClInclude Include="include\generic_queue.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\binary_search_tree.cpp" />

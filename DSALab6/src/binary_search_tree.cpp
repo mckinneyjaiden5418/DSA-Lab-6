@@ -1,4 +1,6 @@
 #include "../include/binary_search_tree.h"
+#include "../include/generic_queue.h"
+#include <iostream>
 
 bool BST::insert(int value, TreeNode*& node) {
 	if (node == nullptr) {
@@ -84,4 +86,58 @@ bool BST::remove(int value, TreeNode*& node) {
 
 bool BST::remove(int value) {
 	return remove(value, root);
+}
+
+// Traversal Methods
+
+void BST::in_order_traversal(TreeNode* node) {
+	if (node == nullptr) return;
+
+	in_order_traversal(node->left);
+	std::cout << node->value << " ";
+	in_order_traversal(node->right);
+}
+
+void BST::in_order_traversal() {
+	in_order_traversal(root);
+}
+
+void BST::pre_order_traversal(TreeNode* node) {
+	if (node == nullptr) return;
+
+	std::cout << node->value << " ";
+	pre_order_traversal(node->left);
+	pre_order_traversal(node->right);
+}
+
+void BST::pre_order_traversal() {
+	pre_order_traversal(root);
+}
+
+void BST::post_order_traversal(TreeNode* node) {
+	if (node == nullptr) return;
+
+	post_order_traversal(node->left);
+	post_order_traversal(node->right);
+	std::cout << node->value << " ";
+}
+
+void BST::post_order_traversal() {
+	post_order_traversal(root);
+}
+
+void BST::level_order_traversal() {
+	if (root == nullptr) return;
+
+	Queue<TreeNode*> queue;
+	queue.enqueue(root);
+	while (!queue.is_empty()) {
+		TreeNode* current = queue.front();
+		queue.dequeue();
+
+		std::cout << current->value << " ";
+
+		if (current->left != nullptr) queue.enqueue(current->left);
+		if (current->right != nullptr) queue.enqueue(current->right);
+	}
 }
